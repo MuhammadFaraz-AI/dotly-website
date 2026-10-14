@@ -56,7 +56,12 @@ html{scroll-behavior:smooth}
 .blog-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start}
 .posts{display:grid;gap:24px}
 .post{grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:stretch}
-.post__media{aspect-ratio:3/2;border-radius:var(--radius-input);background:var(--dark-section);color:var(--on-dark-muted);display:grid;place-items:center;font-size:13px;font-weight:500;min-height:180px;box-shadow:inset 0 2px 6px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.06)}
+/* No aspect-ratio here on purpose: .post uses align-items:stretch, so this box's height
+   already comes from the row (matching .post__body); adding aspect-ratio on top of that
+   made the browser recompute width from the stretched height instead of the 260px column,
+   overflowing into the text. width/height:100% give <Image fill> a determinate box without
+   that conflict. */
+.post__media{width:100%;height:100%;min-width:0;border-radius:var(--radius-input);background:var(--dark-section);color:var(--on-dark-muted);display:grid;place-items:center;font-size:13px;font-weight:500;min-height:180px;box-shadow:inset 0 2px 6px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.06)}
 .post__body{display:grid;gap:12px;align-content:center;justify-items:start;padding:8px 8px 8px 0}
 .post__foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .side{display:grid;gap:16px;position:sticky;top:24px}
