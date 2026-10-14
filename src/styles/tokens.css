@@ -1,0 +1,28 @@
+/* Dotly — generated from tokens.json */
+:root,[data-theme="light"]{
+--canvas:#ededec;--surface:#f7f7f7;--surface-white:#ffffff;--ink:#09090b;--ink-muted:#6b6b70;--hairline:#dadada;--dark-section:#0b0b0d;--on-dark:#ffffff;--on-dark-muted:#ffffff99;--accent:#ff4a1c;
+--shadow-raised:0 0 0 1px rgba(9,9,11,0.07), inset 0 1px 0 #ffffff, inset 0 -3px 0 rgba(9,9,11,0.06), 0 5px 0 #d2d2d5, 0 9px 12px rgba(9,9,11,0.08), 0 22px 38px rgba(9,9,11,0.13);
+--shadow-raised-hover:0 0 0 1px rgba(9,9,11,0.07), inset 0 1px 0 #ffffff, inset 0 -3px 0 rgba(9,9,11,0.06), 0 5px 0 #d2d2d5, 0 14px 18px rgba(9,9,11,0.10), 0 34px 58px rgba(9,9,11,0.18);
+--shadow-button-primary:inset 0 1px 0 rgba(255,255,255,0.30), inset 0 -3px 0 rgba(0,0,0,0.50), 0 6px 0 #000000, 0 12px 16px rgba(9,9,11,0.30), 0 20px 32px rgba(9,9,11,0.18);
+--shadow-button-primary-pressed:inset 0 3px 6px rgba(0,0,0,0.60), 0 1px 0 #000000, 0 3px 6px rgba(9,9,11,0.20);
+--shadow-button-secondary:0 0 0 1px rgba(9,9,11,0.08), inset 0 1px 0 #ffffff, inset 0 -3px 0 rgba(9,9,11,0.06), 0 5px 0 #bcbcc1, 0 10px 14px rgba(9,9,11,0.12), 0 18px 28px rgba(9,9,11,0.10);
+--shadow-button-secondary-pressed:0 0 0 1px rgba(9,9,11,0.08), inset 0 3px 6px rgba(9,9,11,0.14), 0 1px 0 #bcbcc1;
+--shadow-tile:inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -3px 0 rgba(0,0,0,0.55), 0 4px 0 #000000, 0 10px 16px rgba(9,9,11,0.28);
+--shadow-inset-field:inset 0 2px 4px rgba(9,9,11,0.10), inset 0 0 0 1px rgba(9,9,11,0.04), 0 1px 0 #ffffff;
+--shadow-dark-raised:inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -3px 0 rgba(0,0,0,0.55), 0 5px 0 #000000, 0 12px 18px rgba(9,9,11,0.28), 0 28px 50px rgba(9,9,11,0.32);
+}
+:root{
+--container-max:1200px;--gutter:24px;--gutter-mobile:16px;--section-y:96px;--section-y-mobile:64px;--tap-target:44px;--icon-tile:48px;
+--radius-pill:99px;--radius-card:24px;--radius-panel:32px;--radius-input:14px;--radius-tile:14px;
+--bp-tablet:810px;--bp-desktop:1200px;--ghost-wordmark:0.06;
+--font-sans:"Urbanist", system-ui, sans-serif;
+}
+.display{font-family:var(--font-sans);font-size:72px;line-height:1.05;letter-spacing:-0.02em;font-weight:500}
+.h2{font-family:var(--font-sans);font-size:48px;line-height:1.1;letter-spacing:-0.015em;font-weight:500}
+.h3{font-family:var(--font-sans);font-size:28px;line-height:1.2;letter-spacing:-0.005em;font-weight:500}
+.body-lg{font-family:var(--font-sans);font-size:18px;line-height:1.5;font-weight:400}
+.body{font-family:var(--font-sans);font-size:16px;line-height:1.5;font-weight:400}
+.small{font-family:var(--font-sans);font-size:13px;line-height:1.4;font-weight:500}
+.button{font-family:var(--font-sans);font-size:16px;font-weight:600}
+.eyebrow{font-family:var(--font-sans);font-size:13px;font-weight:500}
+@media (max-width:810px){.display{font-size:40px}.h2{font-size:32px}.h3{font-size:22px}}

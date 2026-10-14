@@ -1,0 +1,410 @@
+/* Dotly components. Every value is a token from tokens.css. Load Urbanist 400/500/600 from Google Fonts first. */
+.dt{font-family:var(--font-sans);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.dt *,.dt *::before,.dt *::after{box-sizing:border-box}
+.dt h1,.dt h2,.dt h3,.dt p{margin:0}
+:where(.dt) button{font-family:inherit;color:inherit}
+.dt :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.dt-dark :focus-visible{outline-color:var(--on-dark)}
+.dt-muted{color:var(--ink-muted)}
+.dt-center{text-align:center}
+.dt-wordmark{font-weight:600;font-size:20px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none}
+.dt-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.dt-logo img{display:block;width:40px;height:40px;object-fit:cover;border-radius:var(--radius-tile)}
+.dt-icon{width:20px;height:20px;flex:none}
+
+/* Scroll reveal (Reveal component). Class is only ever added by JS, so content
+   stays fully visible with no JavaScript. Opacity/transform only: no layout shift. */
+.dt-reveal{opacity:0;transform:translateY(var(--dt-reveal-y,24px));transition:opacity var(--dt-reveal-duration,600ms) var(--dt-reveal-ease,ease) var(--dt-reveal-delay,0ms),transform var(--dt-reveal-duration,600ms) var(--dt-reveal-ease,ease) var(--dt-reveal-delay,0ms);will-change:opacity,transform}
+.dt-reveal--visible{opacity:1;transform:none;will-change:auto}
+@media (prefers-reduced-motion:reduce){
+ .dt-reveal{opacity:1;transform:none;transition:none}
+}
+
+/* Button */
+.dt-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--tap-target);padding:0 24px;border:0;border-radius:var(--radius-pill);font-size:16px;font-weight:600;line-height:1;white-space:nowrap;cursor:pointer;text-decoration:none;transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-btn--primary{background:var(--ink);color:var(--on-dark);box-shadow:var(--shadow-button-primary)}
+.dt-btn--secondary{background:var(--surface-white);color:var(--ink);box-shadow:var(--shadow-raised)}
+.dt-btn:hover{transform:translateY(-1px)}
+.dt-btn--circle{width:var(--tap-target);padding:0}
+
+/* Eyebrow chip and tag chip */
+.dt-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:var(--radius-pill);background:var(--surface-white);box-shadow:var(--shadow-raised);font-size:13px;line-height:1.4;font-weight:500;color:var(--ink)}
+.dt-chip--eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.dt-chip--dark{background:transparent;box-shadow:inset 0 0 0 1px var(--on-dark-muted);color:var(--on-dark)}
+
+/* Icon tile */
+.dt-tile{width:var(--icon-tile);height:var(--icon-tile);border-radius:var(--radius-tile);background:var(--ink);color:var(--on-dark);display:inline-grid;place-items:center;flex:none}
+
+/* Section opener */
+.dt-opener{display:grid;justify-items:center;gap:16px;text-align:center;max-width:640px;margin:0 auto 48px}
+.dt-opener p{color:var(--ink-muted);font-size:18px}
+
+/* Nav */
+.dt-nav{display:inline-flex;align-items:center;gap:32px;padding:8px 8px 8px 24px;border-radius:var(--radius-pill);background:var(--surface-white);box-shadow:var(--shadow-raised)}
+.dt-nav__links{display:flex;gap:24px}
+.dt-nav__links a{font-size:13px;font-weight:500;line-height:1.4;color:var(--ink);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.dt-nav__links a[aria-current="page"]{border-bottom-color:var(--accent)}
+.dt-nav__burger{display:none}
+
+/* Hero */
+.dt-hero{position:relative;overflow:hidden;border-radius:var(--radius-panel);padding:112px 24px 72px;text-align:center;display:grid;justify-items:center;gap:24px}
+.dt-hero__bg{position:absolute;inset:0;z-index:0;background:radial-gradient(55% 120% at 104% 28%,var(--accent) 0,transparent 62%),radial-gradient(40% 90% at 108% 95%,var(--ink) 0,transparent 60%),linear-gradient(105deg,var(--surface-white) 0%,var(--hairline) 48%,var(--canvas) 100%)}
+.dt-hero__nav{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:2}
+.dt-hero>*:not(.dt-hero__bg):not(.dt-hero__nav){position:relative;z-index:1}
+.dt-hero__sub{max-width:560px;color:var(--ink);font-size:18px;line-height:1.5}
+.dt-hero__actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.dt-hero__pill{display:inline-flex;align-items:center;justify-content:center;gap:0;vertical-align:middle;width:176px;height:68px;margin-left:12px;border-radius:var(--radius-pill);background:var(--accent);transform-origin:left center;transition:transform var(--dt-pill-hover-duration,320ms) var(--dt-pill-spring-ease,ease),box-shadow var(--dt-pill-hover-duration,320ms) ease;animation:dt-pill-grow var(--dt-pill-grow-duration,420ms) var(--dt-pill-grow-ease,ease-out) var(--dt-pill-in-delay,800ms) backwards}
+.dt-hero__pill:active{transform:scale(.94)}
+.dt-hero__pill span{display:grid;place-items:center;width:44px;height:44px;margin:0 -6px;border-radius:var(--radius-tile);background:var(--surface-white);color:var(--ink);box-shadow:var(--shadow-raised)}
+.dt-hero__pill span:nth-child(1){transform:rotate(-10deg);animation:dt-pill-tile-in-1 var(--dt-pill-tile-duration,480ms) var(--dt-pill-spring-ease,ease) calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms)) both,dt-pill-float-1 var(--dt-pill-float-duration,3200ms) ease-in-out calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms) + var(--dt-pill-tile-duration,480ms)) infinite}
+.dt-hero__pill span:nth-child(2){transform:rotate(6deg) translateY(-6px);animation:dt-pill-tile-in-2 var(--dt-pill-tile-duration,480ms) var(--dt-pill-spring-ease,ease) calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms) + var(--dt-pill-tile-stagger,90ms)) both,dt-pill-float-2 calc(var(--dt-pill-float-duration,3200ms) * 1.1) ease-in-out calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms) + var(--dt-pill-tile-stagger,90ms) + var(--dt-pill-tile-duration,480ms)) infinite}
+.dt-hero__pill span:nth-child(3){transform:rotate(-4deg) translateY(4px);animation:dt-pill-tile-in-3 var(--dt-pill-tile-duration,480ms) var(--dt-pill-spring-ease,ease) calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms) + var(--dt-pill-tile-stagger,90ms) * 2) both,dt-pill-float-3 calc(var(--dt-pill-float-duration,3200ms) * 0.92) ease-in-out calc(var(--dt-pill-in-delay,800ms) + var(--dt-pill-tiles-offset,320ms) + var(--dt-pill-tile-stagger,90ms) * 2 + var(--dt-pill-tile-duration,480ms)) infinite}
+@keyframes dt-pill-grow{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+@keyframes dt-pill-tile-in-1{from{opacity:0;transform:scale(.6) rotate(-12deg) translateY(10px)}to{opacity:1;transform:rotate(-10deg)}}
+@keyframes dt-pill-tile-in-2{from{opacity:0;transform:scale(.6) rotate(-12deg) translateY(10px)}to{opacity:1;transform:rotate(6deg) translateY(-6px)}}
+@keyframes dt-pill-tile-in-3{from{opacity:0;transform:scale(.6) rotate(-12deg) translateY(10px)}to{opacity:1;transform:rotate(-4deg) translateY(4px)}}
+@keyframes dt-pill-float-1{0%,100%{transform:rotate(-10deg) translateY(0)}50%{transform:rotate(-13deg) translateY(calc(-1 * var(--dt-pill-float-y,4px)))}}
+@keyframes dt-pill-float-2{0%,100%{transform:rotate(6deg) translateY(-6px)}50%{transform:rotate(9deg) translateY(calc(-6px - var(--dt-pill-float-y,4px)))}}
+@keyframes dt-pill-float-3{0%,100%{transform:rotate(-4deg) translateY(4px)}50%{transform:rotate(-7deg) translateY(calc(4px + var(--dt-pill-float-y,4px)))}}
+@media (hover:hover) and (pointer:fine){
+ .dt-hero__pill:hover{box-shadow:0 0 0 1px rgba(255,74,28,.3),0 16px 32px rgba(255,74,28,.45),0 32px 64px rgba(255,74,28,.3)}
+ .dt-hero__pill span{transition:transform var(--dt-pill-hover-duration,320ms) var(--dt-pill-spring-ease,ease),box-shadow var(--dt-pill-hover-duration,320ms) ease}
+ /* !important: the idle-float keyframe (infinite) otherwise outranks this plain
+    hover rule every frame, since an active CSS animation beats a non-important
+    author rule for the same property regardless of selector specificity. */
+ .dt-hero__pill:hover span:nth-child(1){transform:translate(calc(-1 * var(--dt-pill-fan-x,10px)),calc(-1 * var(--dt-pill-fan-y,10px))) rotate(-20deg) !important;box-shadow:var(--shadow-raised-hover)}
+ .dt-hero__pill:hover span:nth-child(2){transform:translateY(calc(-1 * var(--dt-pill-fan-y,10px) - 2px)) rotate(10deg) !important;box-shadow:var(--shadow-raised-hover)}
+ .dt-hero__pill:hover span:nth-child(3){transform:translate(var(--dt-pill-fan-x,10px),calc(-1 * var(--dt-pill-fan-y,10px) + 4px)) rotate(-10deg) !important;box-shadow:var(--shadow-raised-hover)}
+ .dt-hero__pill:hover span:nth-child(1):hover{transform:translate(calc(-1 * var(--dt-pill-fan-x,10px) - 4px),calc(-1 * var(--dt-pill-fan-y,10px) - 6px)) rotate(-26deg) scale(1.1) !important;box-shadow:var(--shadow-raised-hover),0 0 16px rgba(255,74,28,.5)}
+ .dt-hero__pill:hover span:nth-child(2):hover{transform:translateY(calc(-1 * var(--dt-pill-fan-y,10px) - 8px)) rotate(16deg) scale(1.1) !important;box-shadow:var(--shadow-raised-hover),0 0 16px rgba(255,74,28,.5)}
+ .dt-hero__pill:hover span:nth-child(3):hover{transform:translate(calc(var(--dt-pill-fan-x,10px) + 4px),calc(-1 * var(--dt-pill-fan-y,10px) - 2px)) rotate(-14deg) scale(1.1) !important;box-shadow:var(--shadow-raised-hover),0 0 16px rgba(255,74,28,.5)}
+}
+
+/* Logo strip */
+.dt-strip{display:grid;gap:16px;justify-items:center;text-align:center}
+.dt-marquee{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.dt-marquee__track{display:flex;gap:64px;width:max-content;animation:dt-marquee 30s linear infinite}
+.dt-marquee:hover .dt-marquee__track{animation-play-state:paused}
+.dt-marquee__item{font-size:22px;font-weight:600;letter-spacing:-0.01em;color:var(--ink-muted);white-space:nowrap}
+@keyframes dt-marquee{to{transform:translateX(-50%)}}
+
+/* Stats row */
+.dt-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:32px;border-radius:var(--radius-card);background:var(--surface-white);box-shadow:var(--shadow-raised)}
+.dt-stat{display:grid;gap:4px}
+.dt-stat__num{font-size:48px;line-height:1.1;letter-spacing:-0.015em;font-weight:500}
+.dt-stat__label{color:var(--ink-muted);font-size:16px}
+
+/* Services accordion */
+.dt-acc{display:grid;gap:16px}
+.dt-acc__row{border-radius:var(--radius-card);background:var(--surface-white);box-shadow:var(--shadow-raised);overflow:hidden;transition:background 300ms ease,color 300ms ease,transform 200ms ease,box-shadow 200ms ease}
+.dt-acc__row:not([data-open]):hover{transform:translateY(-2px);box-shadow:var(--shadow-raised-hover)}
+.dt-acc__head{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:72px;padding:20px 32px;border:0;background:none;cursor:pointer;text-align:left;font-size:28px;line-height:1.2;letter-spacing:-0.005em;font-weight:500}
+.dt-acc__icon{display:grid;place-items:center;width:var(--tap-target);height:var(--tap-target);border-radius:50%;box-shadow:inset 0 0 0 1px var(--ink-muted);flex:none;transition:transform 300ms ease}
+.dt-acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 300ms ease}
+.dt-acc__inner{min-height:0;overflow:hidden;position:relative;display:grid;gap:20px;padding:0 32px;opacity:0;transition:opacity 300ms ease}
+.dt-acc__row[data-open]{background:var(--dark-section);color:var(--on-dark)}
+.dt-acc__row[data-open] .dt-acc__icon{box-shadow:inset 0 0 0 1px var(--on-dark-muted);transform:rotate(45deg)}
+.dt-acc__row[data-open] .dt-acc__body{grid-template-rows:1fr}
+.dt-acc__row[data-open] .dt-acc__inner{opacity:1;padding-bottom:32px}
+.dt-acc__desc{max-width:560px;color:var(--on-dark-muted);font-size:18px}
+.dt-acc__tags{display:flex;flex-wrap:wrap;gap:8px}
+.dt-acc__index{position:absolute;right:32px;bottom:24px;font-size:72px;line-height:1.05;letter-spacing:-0.02em;font-weight:500;color:var(--on-dark-muted)}
+
+/* Process slider: 4 col grid on desktop, 2 col on tablet (1199px query below),
+   horizontal scroll-snap only under 810px where 4 columns no longer fit. */
+.dt-slider{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:8px 4px 32px}
+.dt-slider::-webkit-scrollbar{display:none}
+.dt-step{scroll-snap-align:start;display:grid;gap:16px;align-content:start;padding:24px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised);transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-step:hover,.dt-case:hover,.dt-feature:hover,.dt-price:hover{transform:translateY(-4px);box-shadow:var(--shadow-raised-hover)}
+.dt-step__top{display:flex;align-items:center;justify-content:space-between}
+.dt-step__foot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px}
+.dt-step__num{font-size:48px;line-height:1.1;letter-spacing:-0.015em;font-weight:500;color:var(--ink-muted)}
+.dt-slider__ctrl{display:none;gap:12px}
+
+/* Case study card */
+.dt-case{display:grid;gap:20px;padding:16px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised);transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-case__media{display:grid;place-items:center;aspect-ratio:2/1;border-radius:var(--radius-input);background:var(--dark-section);color:var(--on-dark-muted);font-size:13px;font-weight:500}
+.dt-case__body{display:grid;gap:16px;padding:0 8px 8px}
+.dt-case__metrics{display:flex;flex-wrap:wrap;gap:8px}
+.dt-case__fields{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0}
+.dt-case__fields dt{font-size:13px;line-height:1.4;font-weight:500;color:var(--ink-muted)}
+.dt-case__fields dd{margin:4px 0 0;font-size:16px}
+
+/* Why Dotly */
+.dt-why{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.dt-feature{display:grid;gap:16px;align-content:start;padding:32px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised);transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-feature p{color:var(--ink-muted)}
+
+/* Pricing */
+.dt-billing{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:500}
+.dt-toggle{position:relative;width:64px;height:36px;border:0;border-radius:var(--radius-pill);background:var(--accent);cursor:pointer;padding:0}
+.dt-toggle::after{content:"";position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:var(--surface-white);box-shadow:var(--shadow-raised);transition:transform 200ms ease}
+.dt-toggle[aria-checked="true"]::after{transform:translateX(28px)}
+.dt-pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.dt-price{display:grid;gap:20px;align-content:start;padding:32px;border-radius:var(--radius-card);background:var(--surface-white);box-shadow:var(--shadow-raised);transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-price .dt-chip{justify-self:start}
+.dt-price--dark{background:var(--dark-section);color:var(--on-dark)}
+.dt-price__amount{font-size:48px;line-height:1.1;letter-spacing:-0.015em;font-weight:500}
+.dt-price__list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.dt-price__list li{display:flex;gap:10px;align-items:flex-start}
+.dt-price__list svg{margin-top:2px;color:var(--accent)}
+.dt-price--dark .dt-muted{color:var(--on-dark-muted)}
+
+/* Testimonial */
+.dt-quote{display:grid;gap:32px;padding:64px;border-radius:var(--radius-panel);background:var(--dark-section);color:var(--on-dark)}
+.dt-quote__text{font-size:48px;line-height:1.1;letter-spacing:-0.015em;font-weight:500;max-width:900px}
+.dt-quote__by{color:var(--on-dark-muted)}
+.dt-quote__ctrl{display:flex;align-items:center;gap:12px}
+.dt-quote__circle{display:grid;place-items:center;width:var(--tap-target);height:var(--tap-target);border:0;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1px var(--on-dark-muted);color:var(--on-dark);cursor:pointer}
+.dt-quote__count{margin-left:8px;color:var(--on-dark-muted);font-size:13px;font-weight:500}
+
+/* FAQ accordion */
+.dt-faq{display:grid;gap:16px;max-width:720px;margin:0 auto}
+.dt-faq__row{border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised);transition:transform 200ms ease,box-shadow 200ms ease}
+.dt-faq__row:hover{transform:translateY(-2px);box-shadow:var(--shadow-raised-hover)}
+.dt-faq__q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:var(--tap-target);padding:20px 24px;border:0;background:none;cursor:pointer;text-align:left;font-size:16px;font-weight:500}
+.dt-faq__mark{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--on-dark);flex:none}
+.dt-faq__mark .v{display:block}
+.dt-faq__row[data-open] .dt-faq__mark .v{display:none}
+.dt-faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 300ms ease}
+.dt-faq__a>div{min-height:0;overflow:hidden;padding:0 24px;color:var(--ink-muted);opacity:0;transition:opacity 300ms ease}
+.dt-faq__row[data-open] .dt-faq__a{grid-template-rows:1fr}
+.dt-faq__row[data-open] .dt-faq__a>div{opacity:1;padding-bottom:24px}
+
+/* Contact panel */
+.dt-contact{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:64px;border-radius:var(--radius-panel)}
+.dt-contact>*:not(.dt-hero__bg){position:relative;z-index:1}
+.dt-contact__intro{display:grid;gap:20px;justify-items:start}
+.dt-contact__intro p{color:var(--ink);font-size:18px}
+.dt-contact__lines{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.dt-contact__lines li{display:flex;align-items:center;gap:12px;font-size:16px}
+.dt-form{display:grid;gap:16px;padding:32px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised)}
+.dt-field{display:grid;gap:6px}
+.dt-field label{font-size:13px;line-height:1.4;font-weight:500}
+.dt-field input,.dt-field textarea{width:100%;min-height:var(--tap-target);padding:10px 14px;border:1px solid var(--hairline);border-radius:var(--radius-input);background:var(--surface-white);color:var(--ink);font:inherit;font-size:16px}
+.dt-field textarea{min-height:110px;resize:vertical}
+.dt-field input::placeholder,.dt-field textarea::placeholder{color:var(--ink-muted)}
+.dt-attach{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink)}
+
+/* Footer */
+.dt-footer{position:relative;overflow:hidden;display:grid;gap:32px;justify-items:center;padding:120px 0 32px;text-align:center}
+.dt-footer__ghost{position:absolute;left:50%;top:-8px;transform:translateX(-50%);font-size:min(300px,30vw);line-height:1;font-weight:600;letter-spacing:-0.04em;color:var(--ink);opacity:var(--ghost-wordmark);pointer-events:none;user-select:none;white-space:nowrap}
+.dt-footer>*:not(.dt-footer__ghost){position:relative}
+.dt-socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.dt-footer__bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;width:100%;padding-top:24px;border-top:1px solid var(--hairline);font-size:13px;font-weight:500}
+.dt-footer__links{display:flex;gap:20px}
+.dt-footer__links a,.dt-footer__top{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.dt-footer__copy{color:var(--ink)}
+
+/* Responsive: 810px is bp-tablet */
+@media (max-width:1199px){
+ .dt-stats{grid-template-columns:repeat(2,1fr)}
+ .dt-case__fields{grid-template-columns:repeat(2,1fr)}
+ .dt-slider{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:810px){
+ .dt-nav__links,.dt-nav .dt-btn--primary{display:none}
+ .dt-nav__burger{display:grid;place-items:center;width:var(--tap-target);height:var(--tap-target);border:0;border-radius:50%;background:var(--ink);color:var(--on-dark)}
+ .dt-nav{gap:16px}
+ .dt-hero{padding:96px 16px 48px}
+ .dt-hero .display{font-size:40px}
+ .dt-hero__pill{width:132px;height:52px;margin-left:8px}
+ .dt-opener .h2,.dt-quote__text,.dt-stat__num{font-size:32px}
+ .dt-acc__head{font-size:22px;padding:16px 20px}
+ .dt-acc__inner{padding:0 20px}
+ .dt-acc__index{font-size:40px;right:20px}
+ .dt-why,.dt-pricing,.dt-contact,.dt-case__fields{grid-template-columns:1fr}
+ .dt-contact,.dt-quote{padding:32px 20px}
+ .dt-stats{grid-template-columns:1fr}
+ .dt-slider{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:16px 8px 64px}
+ .dt-step{flex:0 0 min(340px,82%)}
+ .dt-slider__ctrl{display:flex}
+}
+
+/* Card */
+.dt-card{display:grid;gap:16px;align-content:start;padding:32px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow-raised)}
+.dt-card p{color:var(--ink-muted)}
+.dt-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* About panel */
+.dt-about{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dt-about__loc{position:relative;display:grid;gap:16px;align-content:end;justify-items:start;min-height:480px;padding:32px;border-radius:var(--radius-panel);background:var(--surface-white);box-shadow:var(--shadow-raised);overflow:hidden}
+.dt-globe{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:min(280px,64%);aspect-ratio:1;border-radius:50%;background-image:radial-gradient(var(--ink-muted) 1.3px,transparent 1.7px);background-size:14px 14px;-webkit-mask-image:radial-gradient(circle,#000 58%,transparent 70%);mask-image:radial-gradient(circle,#000 58%,transparent 70%)}
+.dt-pin{position:absolute;left:58%;top:24%;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 8px var(--surface-white),0 0 0 9px var(--accent)}
+.dt-about__body{display:grid;gap:24px;align-content:start}
+
+/* Feature hub */
+.dt-hubgrid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
+.dt-hubgrid__col{display:grid;gap:24px}
+.dt-feature--sm{padding:24px;gap:12px}
+.dt-feature--sm h3{font-size:22px}
+.dt-hub{display:grid;place-items:center;width:160px;height:160px;border-radius:var(--radius-panel);background:var(--surface-white);box-shadow:var(--shadow-raised)}
+.dt-hub img{width:96px;height:96px;border-radius:var(--radius-card);object-fit:cover}
+
+/* Tools orbit */
+.dt-orbit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(104px,auto));max-width:640px;margin:0 auto}
+.dt-orbit__cell{position:relative;display:grid;place-items:center}
+.dt-orbit__cell--t{grid-column:2;grid-row:1}
+.dt-orbit__cell--l{grid-column:1;grid-row:2}
+.dt-orbit__cell--c{grid-column:2;grid-row:2}
+.dt-orbit__cell--r{grid-column:3;grid-row:2}
+.dt-orbit__cell--b{grid-column:2;grid-row:3}
+.dt-orbit__cell::after,.dt-orbit__cell--c::before{content:"";position:absolute;background:var(--hairline)}
+.dt-orbit__cell--t::after{left:calc(50% - 1px);width:2px;top:50%;bottom:0}
+.dt-orbit__cell--b::after{left:calc(50% - 1px);width:2px;top:0;bottom:50%}
+.dt-orbit__cell--l::after{top:calc(50% - 1px);height:2px;left:50%;right:0}
+.dt-orbit__cell--r::after{top:calc(50% - 1px);height:2px;left:0;right:50%}
+.dt-orbit__cell--c::after{left:calc(50% - 1px);width:2px;top:0;bottom:0}
+.dt-orbit__cell--c::before{top:calc(50% - 1px);height:2px;left:0;right:0}
+.dt-orbit__cell>*{position:relative;z-index:1}
+.dt-orbit__tool{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:var(--radius-pill);background:var(--surface-white);box-shadow:var(--shadow-raised);font-size:16px;font-weight:600}
+.dt-orbit__hub{display:grid;justify-items:center;gap:12px}
+.dt-orbit__hub img{width:72px;height:72px;border-radius:var(--radius-tile);object-fit:cover;box-shadow:var(--shadow-raised)}
+
+/* Team card */
+.dt-team{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:32px;padding:24px;border-radius:var(--radius-panel);background:var(--surface);box-shadow:var(--shadow-raised);align-items:center}
+.dt-team__photo{display:grid;place-items:center;aspect-ratio:1;border-radius:var(--radius-card);background:var(--surface-white);box-shadow:var(--shadow-raised);color:var(--ink-muted);font-size:13px;font-weight:500;text-align:center;padding:16px}
+.dt-team__body{display:grid;gap:16px;align-content:center;padding:8px}
+.dt-team__role{color:var(--ink-muted)}
+
+/* Credentials band (the single dark band) */
+.dt-band{display:grid;gap:64px;padding:64px;border-radius:var(--radius-panel);background:var(--dark-section);color:var(--on-dark)}
+.dt-band .dt-quote{padding:0;border-radius:0;background:none}
+.dt-cred{display:grid}
+.dt-cred__head{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.dt-cred__head .dt-chip{align-self:flex-start}
+.dt-cred__head p{color:var(--on-dark-muted);max-width:520px}
+.dt-cred__row{display:grid;grid-template-columns:var(--icon-tile) 1.2fr 1fr auto;gap:24px;align-items:center;padding:20px 0;border-top:1px solid var(--on-dark-muted)}
+.dt-cred__row .dt-tile{background:var(--surface-white);color:var(--ink)}
+.dt-cred__year{color:var(--on-dark-muted);font-size:13px;font-weight:500}
+.dt-cred__sub{color:var(--on-dark-muted)}
+
+@media (max-width:1199px){
+ .dt-about{grid-template-columns:1fr}
+ .dt-hubgrid{grid-template-columns:1fr 1fr}
+ .dt-hub{display:none}
+}
+@media (max-width:810px){
+ .dt-hubgrid{grid-template-columns:1fr}
+ .dt-team{grid-template-columns:1fr}
+ .dt-band{padding:32px 20px}
+ .dt-cred__row{grid-template-columns:var(--icon-tile) 1fr;gap:12px 16px}
+ .dt-cred__row .dt-cred__sub,.dt-cred__row .dt-cred__year{grid-column:2}
+}
+
+
+/* Depth layer: every raised thing reads as a physical object (slab, key, pressed field). */
+.dt-btn{transition:transform 120ms ease,box-shadow 120ms ease}
+.dt-btn--primary{background-image:linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0) 55%);box-shadow:var(--shadow-button-primary)}
+.dt-btn--secondary{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.05));box-shadow:var(--shadow-button-secondary)}
+.dt-btn:hover{transform:translateY(-1px)}
+.dt-btn--primary:active{transform:translateY(5px);box-shadow:var(--shadow-button-primary-pressed)}
+.dt-btn--secondary:active{transform:translateY(5px);box-shadow:var(--shadow-button-secondary-pressed)}
+.dt-chip{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.04))}
+.dt-chip--dark{background-image:none}
+.dt-tile{background-image:linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0) 55%);box-shadow:var(--shadow-tile)}
+.dt-cred__row .dt-tile{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.06));box-shadow:var(--shadow-raised)}
+.dt-nav{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.04))}
+.dt-stats,.dt-step,.dt-case,.dt-feature,.dt-faq__row,.dt-form,.dt-card,.dt-team,.dt-acc__row,.dt-price{background-image:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0) 45%)}
+.dt-stats,.dt-price:not(.dt-price--dark),.dt-acc__row{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.035))}
+.dt-team__photo,.dt-orbit__tool,.dt-hero__pill span{background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.05))}
+.dt-acc__row[data-open],.dt-price--dark{background-image:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0) 40%);box-shadow:var(--shadow-dark-raised)}
+.dt-band{background-image:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0) 30%);box-shadow:var(--shadow-dark-raised)}
+.dt-quote{box-shadow:var(--shadow-dark-raised)}
+.dt-band .dt-quote{box-shadow:none}
+.dt-case__media{box-shadow:inset 0 3px 8px rgba(0,0,0,0.55),inset 0 0 0 1px rgba(255,255,255,0.06),0 2px 0 #fff}
+.dt-field input,.dt-field textarea{border-color:transparent;box-shadow:var(--shadow-inset-field)}
+.dt-toggle{box-shadow:inset 0 2px 4px rgba(0,0,0,0.35),0 1px 0 #fff}
+.dt-toggle::after{box-shadow:var(--shadow-button-secondary);background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.06))}
+.dt-acc__icon,.dt-quote__circle{box-shadow:var(--shadow-button-secondary);background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.05));background-color:var(--surface-white);color:var(--ink)}
+.dt-acc__row[data-open] .dt-acc__icon,.dt-quote__circle{background-color:var(--surface-white);color:var(--ink);box-shadow:0 0 0 1px rgba(255,255,255,0.1),inset 0 1px 0 #fff,0 4px 0 #8a8a8f,0 10px 14px rgba(0,0,0,0.4)}
+.dt-faq__mark{background-image:linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0) 55%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.28),inset 0 -2px 0 rgba(0,0,0,0.5),0 3px 0 #000,0 7px 10px rgba(9,9,11,0.28)}
+.dt-orbit__hub img,.dt-logo img{box-shadow:var(--shadow-raised)}
+.dt-hero{box-shadow:0 0 0 1px rgba(9,9,11,0.06),inset 0 1px 0 rgba(255,255,255,0.9),0 6px 0 #d2d2d5,0 12px 16px rgba(9,9,11,0.08),0 28px 56px rgba(9,9,11,0.14)}
+.dt-contact{box-shadow:0 0 0 1px rgba(9,9,11,0.06),inset 0 1px 0 rgba(255,255,255,0.9),0 6px 0 #d2d2d5,0 12px 16px rgba(9,9,11,0.08),0 28px 56px rgba(9,9,11,0.14)}
+
+/* Feature hub: bracket connectors and the red hub tile */
+.dt-panel-white{background-color:var(--surface-white);background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(9,9,11,0.03));border-radius:var(--radius-panel);box-shadow:var(--shadow-raised);padding:96px 24px}
+.dt-feature--sm{padding:32px;gap:16px}
+.dt-feature--sm h3{font-size:24px}
+.dt-hub{flex-direction:column;gap:10px;width:208px;height:160px;border-radius:28px;background-color:var(--accent);background-image:linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0) 55%);color:var(--on-dark);box-shadow:inset 0 1px 0 rgba(255,255,255,0.45),inset 0 -3px 0 rgba(0,0,0,0.18),0 18px 36px rgba(255,74,28,0.35),0 44px 80px rgba(255,74,28,0.22)}
+.dt-hub{display:grid;place-items:center;align-content:center}
+.dt-hub svg{width:44px;height:44px}
+.dt-hub span{font-size:24px;line-height:1;font-weight:600;letter-spacing:-0.01em}
+@media (min-width:1200px){
+ .dt-hubgrid{grid-template-columns:minmax(0,1fr) 208px minmax(0,1fr);column-gap:96px}
+ .dt-hubgrid__col{position:relative;grid-auto-rows:1fr;gap:32px}
+}
+@media (max-width:1199px){.dt-hub{display:none}.dt-panel-white{padding:72px 24px}}
+@media (max-width:810px){.dt-panel-white{padding:56px 16px}}
+
+/* Why Dotly hub connectors: animated SVG overlay (HubConnectors) replaces the old
+   static bracket lines above, at the same >=1200px breakpoint where the hub tile shows. */
+.dt-hubgrid{position:relative}
+.dt-hub{position:relative;z-index:1;animation:dt-hub-breathe var(--dt-hub-breathe-duration,3600ms) ease-in-out infinite}
+.dt-feature--sm{position:relative;z-index:1}
+.dt-hubfx{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.dt-hubfx svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dt-hubfx__line{fill:none;stroke:var(--hairline);stroke-width:2}
+.dt-hubfx__node{fill:var(--accent);opacity:.4;animation:dt-hub-node-pulse calc(var(--dt-hub-node-pulse-duration,3s) * var(--line-factor,1) * var(--dt-hub-speed,1)) linear infinite;animation-play-state:paused}
+.dt-hubfx[data-active] .dt-hubfx__node{animation-play-state:running}
+.dt-hubfx__dot{position:absolute;top:0;left:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px 2px rgba(255,74,28,.65),0 0 2px rgba(255,74,28,.9);offset-distance:0%;animation:dt-hub-dot-travel calc(var(--dt-hub-dot-duration,3s) * var(--line-factor,1) * var(--dt-hub-speed,1)) linear infinite;animation-play-state:paused}
+.dt-hubfx[data-active] .dt-hubfx__dot{animation-play-state:running}
+@keyframes dt-hub-dot-travel{from{offset-distance:0%}to{offset-distance:100%}}
+@keyframes dt-hub-node-pulse{0%,78%{opacity:.4;r:3}88%{opacity:1;r:5}100%{opacity:.4;r:3}}
+@keyframes dt-hub-breathe{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,0.45),inset 0 -3px 0 rgba(0,0,0,0.18),0 18px 36px rgba(255,74,28,0.35),0 44px 80px rgba(255,74,28,0.22)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,0.45),inset 0 -3px 0 rgba(0,0,0,0.18),0 22px 46px rgba(255,74,28,0.5),0 54px 96px rgba(255,74,28,0.32)}}
+
+/* Why Dotly hub tile: hover/touch state, set via HubTile's JS as [data-hub-active]
+   on the shared .dt-hubgrid ancestor so it can reach the dots (--dt-hub-speed,
+   inherited) and the 6 cards (siblings, out of reach of plain CSS :hover) too. */
+.dt-hub{transition:transform var(--dt-hub-hover-duration,380ms) var(--dt-pill-spring-ease,ease),box-shadow var(--dt-hub-hover-duration,380ms) ease}
+.dt-hub.dt-hub--pop-ready{opacity:0;transform:scale(.6)}
+.dt-hub.dt-hub--popped{opacity:1;transform:none;animation:dt-hub-pop var(--dt-hub-pop-duration,450ms) var(--dt-pill-spring-ease,ease),dt-hub-breathe var(--dt-hub-breathe-duration,3600ms) ease-in-out infinite}
+@keyframes dt-hub-pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.dt-hubgrid[data-hub-active]{--dt-hub-speed:var(--dt-hub-active-speed,.6)}
+.dt-hubgrid[data-hub-active] .dt-hub{transform:translateY(calc(-1 * var(--dt-hub-lift,6px))) scale(var(--dt-hub-hover-scale,1.04));box-shadow:inset 0 1px 0 rgba(255,255,255,0.45),inset 0 -3px 0 rgba(0,0,0,0.18),0 26px 54px rgba(255,74,28,0.55),0 60px 110px rgba(255,74,28,0.38),0 0 0 1px rgba(255,74,28,.25)}
+.dt-hub:active,.dt-hubgrid[data-hub-active] .dt-hub:active{transform:translateY(2px) scale(.98);box-shadow:inset 0 2px 4px rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.25),0 8px 16px rgba(255,74,28,.25)}
+.dt-hub svg{transition:transform var(--dt-hub-hover-duration,380ms) var(--dt-pill-spring-ease,ease)}
+.dt-hubgrid[data-hub-active] .dt-hub svg{transform:rotate(90deg) scale(1.12)}
+.dt-hub::before,.dt-hub::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(255,74,28,.55);opacity:0;pointer-events:none}
+.dt-hubgrid[data-hub-active] .dt-hub::before{animation:dt-hub-ripple var(--dt-hub-ripple-duration,1600ms) ease-out infinite}
+.dt-hubgrid[data-hub-active] .dt-hub::after{animation:dt-hub-ripple var(--dt-hub-ripple-duration,1600ms) ease-out infinite calc(var(--dt-hub-ripple-duration,1600ms) / 2)}
+@keyframes dt-hub-ripple{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+.dt-hubgrid[data-hub-active] .dt-feature--sm{transform:translateY(calc(-1 * var(--dt-hub-card-lift,3px)));box-shadow:var(--shadow-raised-hover);transition:transform var(--dt-hub-hover-duration,380ms) ease,box-shadow var(--dt-hub-hover-duration,380ms) ease}
+
+/* Layout fixes: flex columns instead of stretched grid rows for text stacks */
+.dt-opener{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:16px}
+.dt-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.dt-team__body,.dt-contact__intro,.dt-case__body,.dt-form,.dt-feature,.dt-card,.dt-step,.dt-price,.dt-cred__head,.dt-strip{display:flex;flex-direction:column}
+.dt-team__body{justify-content:center;gap:16px}
+.dt-contact__intro{align-items:flex-start;gap:20px}
+.dt-case__body{gap:16px}
+.dt-form{gap:16px}
+.dt-feature{gap:16px;justify-content:flex-start}
+.dt-feature--sm{gap:16px}
+.dt-card{gap:16px}
+.dt-step{gap:16px;justify-content:flex-start}
+.dt-step__foot{margin-top:auto}
+.dt-price{gap:20px;justify-content:flex-start}
+.dt-price .dt-btn{align-self:flex-start}
+.dt-strip{align-items:center;gap:16px}
+
+.dt-price .dt-chip,.dt-feature .dt-chip,.dt-card .dt-chip,.dt-case__body .dt-chip,.dt-team__body .dt-chip{align-self:flex-start}
+@media (max-width:810px){.dt-acc__index{position:static;justify-self:end;font-size:40px;line-height:1}.dt-acc__inner{gap:16px}}
+.dt-case__media{background-image:radial-gradient(55% 90% at 85% 15%,rgba(255,74,28,0.28),transparent 65%)}
+/* Mobile menu: a floating panel under the pill nav */
+.dt-mnav{display:none}
+.dt-hero{overflow:visible}
+.dt-hero__bg{border-radius:inherit}
+.dt-hero__nav{z-index:20}
+@media (max-width:810px){
+ .dt-mnav{display:grid;gap:4px;position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);width:min(calc(100vw - 40px),360px);padding:12px;border-radius:var(--radius-card);background-color:var(--surface-white);box-shadow:var(--shadow-raised);z-index:30}
+ .dt-mnav a:not(.dt-btn){display:flex;align-items:center;gap:10px;min-height:48px;padding:0 16px;border-radius:var(--radius-input);color:var(--ink);text-decoration:none;font-size:16px;font-weight:500}
+ .dt-mnav a[aria-current="page"]{background:var(--canvas)}
+ .dt-mnav a[aria-current="page"]::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+ .dt-mnav .dt-btn{margin-top:8px;width:100%}
+}
+
+@media (prefers-reduced-motion:reduce){
+ .dt *,.dt *::before,.dt *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

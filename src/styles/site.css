@@ -1,0 +1,102 @@
+/* Animation tuning: change these to adjust speed/distance site-wide.
+   Scroll reveal (Reveal component) */
+:root{
+ --dt-reveal-duration:600ms;
+ --dt-reveal-ease:cubic-bezier(0.16,1,0.3,1);
+ --dt-reveal-y:24px;
+ --dt-reveal-stagger:80ms;
+ /* Hero load-in sequence */
+ --dt-hero-in-duration:700ms;
+ --dt-hero-in-stagger:90ms;
+ --dt-hero-in-y:16px;
+ /* Why Dotly hub connectors */
+ --dt-hub-dot-duration:3s;
+ --dt-hub-node-pulse-duration:3s;
+ --dt-hub-breathe-duration:3600ms;
+ /* Hero pill (orange icon pill): entrance, idle float, hover fan */
+ --dt-pill-in-delay:calc(var(--dt-hero-in-stagger) * 2 + var(--dt-hero-in-duration));
+ --dt-pill-grow-duration:420ms;
+ --dt-pill-grow-ease:cubic-bezier(.22,1,.36,1);
+ --dt-pill-tiles-offset:320ms;
+ --dt-pill-tile-duration:480ms;
+ --dt-pill-tile-stagger:90ms;
+ --dt-pill-spring-ease:cubic-bezier(.34,1.56,.64,1);
+ --dt-pill-float-duration:3200ms;
+ --dt-pill-float-y:4px;
+ --dt-pill-hover-duration:320ms;
+ --dt-pill-fan-x:10px;
+ --dt-pill-fan-y:10px;
+ /* Why Dotly hub tile: hover/touch ripple, pop-in entrance */
+ --dt-hub-pop-duration:450ms;
+ --dt-hub-hover-duration:380ms;
+ --dt-hub-lift:6px;
+ --dt-hub-hover-scale:1.04;
+ --dt-hub-ripple-duration:1600ms;
+ --dt-hub-card-lift:3px;
+ --dt-hub-active-speed:.6;
+}
+
+body{margin:0;background:var(--canvas);font-family:var(--font-sans);color:var(--ink)}
+html{scroll-behavior:smooth}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding-top:96px;padding-bottom:96px}
+.cases{display:grid;grid-template-columns:1fr;gap:24px}
+@media (min-width:1200px){
+ .cases{grid-template-columns:repeat(2,1fr)}
+ .cases .dt-case__fields{grid-template-columns:repeat(2,1fr)}
+}
+.hero-wrap{padding:16px}
+@media (max-width:810px){.wrap{padding:0 16px}.sec{padding-top:64px;padding-bottom:64px}.hero-wrap{padding:8px}}
+/* Services */
+.panel-white{background:var(--surface-white);border-radius:var(--radius-panel);box-shadow:var(--shadow-raised);padding:96px 24px 96px;margin:0 0 96px}
+.svc-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:start;column-gap:32px}
+.svc-media{grid-row:1/3;aspect-ratio:4/3;min-height:200px;border-radius:14px;background:var(--dark-section);box-shadow:inset 0 2px 6px rgba(0,0,0,0.6),inset 0 0 0 1px rgba(255,255,255,0.08);display:grid;place-items:center;color:var(--on-dark-muted);font-size:13px;font-weight:500}
+@media (max-width:810px){.svc-inner{grid-template-columns:1fr}.svc-media{grid-row:auto}.panel-white{padding:64px 16px;margin:32px 0 64px}}
+/* Blog */
+.blog-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start}
+.posts{display:grid;gap:24px}
+.post{grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:stretch}
+.post__media{aspect-ratio:3/2;border-radius:var(--radius-input);background:var(--dark-section);color:var(--on-dark-muted);display:grid;place-items:center;font-size:13px;font-weight:500;min-height:180px;box-shadow:inset 0 2px 6px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.06)}
+.post__body{display:grid;gap:12px;align-content:center;justify-items:start;padding:8px 8px 8px 0}
+.post__foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.side{display:grid;gap:16px;position:sticky;top:24px}
+.cats{display:grid;gap:10px}
+.cat{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding:10px 18px;border:0;border-radius:var(--radius-pill);background-color:var(--surface-white);box-shadow:var(--shadow-button-secondary);font-family:inherit;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;text-align:left}
+.cat[aria-pressed="true"]{background-color:var(--ink);color:var(--on-dark);box-shadow:var(--shadow-button-primary)}
+.cat[aria-pressed="true"] .dt-muted{color:var(--on-dark-muted)}
+@media (max-width:1199px){.blog-grid{grid-template-columns:1fr}.side{position:static;order:-1}}
+@media (max-width:810px){.post{grid-template-columns:1fr}.post__body{padding:0 8px 8px}}
+/* Contact */
+.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.info{align-items:center;text-align:center}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.contact-copy{display:grid;gap:24px;justify-items:start}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+.steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:start}
+.picks{display:flex;flex-wrap:wrap;gap:10px}
+.pick{border:0;cursor:pointer;min-height:44px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--ink)}
+.pick[aria-pressed="true"]{background-color:var(--ink);color:var(--on-dark);box-shadow:var(--shadow-button-primary)}
+@media (max-width:1199px){.info-grid{grid-template-columns:minmax(0,1fr)}.contact-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Hero load-in: a gentle staggered sequence on mount, not scroll triggered.
+   Pure CSS so hero text paints immediately; targets .dt-hero's direct children
+   in source order (bg layer excluded) so every PageHero usage gets it for free. */
+.dt-hero>*:not(.dt-hero__bg){opacity:0;animation:dt-hero-in var(--dt-hero-in-duration) var(--dt-reveal-ease) forwards}
+.dt-hero>*:nth-child(2){animation-delay:calc(var(--dt-hero-in-stagger) * 0)}
+.dt-hero>*:nth-child(3){animation-delay:calc(var(--dt-hero-in-stagger) * 1)}
+.dt-hero>*:nth-child(4){animation-delay:calc(var(--dt-hero-in-stagger) * 2)}
+.dt-hero>*:nth-child(5){animation-delay:calc(var(--dt-hero-in-stagger) * 3)}
+.dt-hero>*:nth-child(6){animation-delay:calc(var(--dt-hero-in-stagger) * 4)}
+.dt-hero>*:nth-child(7){animation-delay:calc(var(--dt-hero-in-stagger) * 5)}
+.dt-hero>*:nth-child(8){animation-delay:calc(var(--dt-hero-in-stagger) * 6)}
+.dt-hero>*:nth-child(9){animation-delay:calc(var(--dt-hero-in-stagger) * 7)}
+@keyframes dt-hero-in{from{opacity:0;transform:translateY(var(--dt-hero-in-y))}to{opacity:1;transform:none}}
+/* .dt-hero__nav centers itself with translateX(-50%) (see components.css); the generic
+   keyframe above would overwrite that with transform:none, so it gets its own keyframe
+   that keeps the centering transform in both the start and end state. */
+@keyframes dt-hero-in-nav{from{opacity:0;transform:translate(-50%,var(--dt-hero-in-y))}to{opacity:1;transform:translateX(-50%)}}
+.dt-hero>.dt-hero__nav{animation-name:dt-hero-in-nav}
+@media (prefers-reduced-motion:reduce){
+ .dt-hero>*{opacity:1!important;animation:none!important;transform:none!important}
+ .dt-hero>.dt-hero__nav{transform:translateX(-50%)!important}
+}
