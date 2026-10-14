@@ -56,7 +56,7 @@ const EXPECTED = [
   { file: "images/blog/n8n-vs-zapier-vs-make.webp", slot: "blog" },
   { file: "images/blog/rag-chatbot.webp", slot: "blog" },
   { file: "images/blog/ecommerce-workflows.webp", slot: "blog" },
-  { file: "images/team/founder.jpg", slot: "team" },
+  { file: "images/team/founder.webp", slot: "team" },
   { file: "og-image.png", slot: "og" },
 ];
 

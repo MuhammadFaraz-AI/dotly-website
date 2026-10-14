@@ -77,7 +77,7 @@ whether they're over 300 KB or far off the ratio their slot expects.
 | `public/images/blog/n8n-vs-zapier-vs-make.webp` | 3:2 | < 300 KB | Post cover, `/blog` |
 | `public/images/blog/rag-chatbot.webp` | 3:2 | < 300 KB | Post cover, `/blog` |
 | `public/images/blog/ecommerce-workflows.webp` | 3:2 | < 300 KB | Post cover, `/blog` |
-| `public/images/team/founder.jpg` | 1:1 (square) | < 300 KB | Founder photo on `/` and `/about` |
+| `public/images/team/founder.webp` | 1:1 (square) | < 300 KB | Founder photo on `/` and `/about` |
 | `public/og-image.png` | 1200×630 (1.91:1) | < 300 KB | Default Open Graph / Twitter card image |
 
 Two ratios differ from what you'd naturally assume looking at the design, so regenerate to these if your

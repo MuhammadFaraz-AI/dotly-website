@@ -5,7 +5,7 @@ export const siteConfig = {
     "Dotly builds AI agents and n8n workflows for ecommerce and healthcare brands. Product images in minutes, leads followed up automatically, support answered around the clock.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   founder: "Muhammad Faraz",
-  founderImage: { src: "/images/team/founder.jpg", alt: "Muhammad Faraz, founder of Dotly" },
+  founderImage: { src: "/images/team/founder.webp", alt: "Muhammad Faraz, founder of Dotly" },
   location: "Karachi, Pakistan",
   socials: {
     linkedin: "#",
